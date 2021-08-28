@@ -11,10 +11,13 @@ public class DBUtils {
     private static Statement statement;
     private static ResultSet resultSet;
 
-    public static void createConnection() {
-        String dbUrl = "jdbc:oracle:thin:@52.87.154.190:1521:xe";
-        String dbUsername = "hr";
-        String dbPassword = "hr";
+    /**
+     * create Connection method that accept any jdbc url and username and password
+     * @param dbUrl    JDBC URL of the database
+     * @param dbUsername  database username
+     * @param dbPassword  database password
+     */
+    public static void createConnection(String dbUrl,String dbUsername,String dbPassword ) {
         try {
             connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (SQLException e) {
@@ -45,6 +48,7 @@ public class DBUtils {
      *         The rest of the data will be ignored
      */
     public static Object getCellValue(String query) {
+
         return getQueryResultList(query).get(0).get(0);
     }
     /**
@@ -55,6 +59,7 @@ public class DBUtils {
      *         be returned. The rest of the data will be ignored
      */
     public static List<Object> getRowList(String query) {
+
         return getQueryResultList(query).get(0);
     }
     /**
@@ -65,6 +70,7 @@ public class DBUtils {
      *         only first row will be returned. The rest of the data will be ignored
      */
     public static Map<String, Object> getRowMap(String query) {
+
         return getQueryResultMap(query).get(0);
     }
     /**
