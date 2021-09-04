@@ -1,4 +1,4 @@
-package practice;
+package api_review;
 
 import io.restassured.http.ContentType;
 import org.testng.annotations.*;
